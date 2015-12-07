@@ -1,4 +1,4 @@
-import bpy, re
+import bpy
 
 # アドオン情報
 bl_info = {
@@ -52,7 +52,11 @@ def overwrite_keys():
 		
 		for keymap_item in keymap.keymap_items:
 			
-			if re.search('\.(delete)$', keymap_item.idname):
+			if not keymap_item.idname: continue
+			
+			base, command = keymap_item.idname.split('.')
+			
+			if base not in ['sketch'] and command == 'delete':
 				
 				addon_keymap_item = addon_keymap.keymap_items.new('wm.unconfirmable_delete', keymap_item.type, 'PRESS', head=True)
 				addon_keymap_item.properties.command = keymap_item.idname
