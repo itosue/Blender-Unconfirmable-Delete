@@ -58,7 +58,7 @@ def overwrite_keys():
 			
 			if base not in ['sketch'] and command == 'delete':
 				
-				addon_keymap_item = addon_keymap.keymap_items.new('wm.unconfirmable_delete', keymap_item.type, 'PRESS', head=True)
+				addon_keymap_item = addon_keymap.keymap_items.new('wm.unconfirmable_delete', keymap_item.type, 'PRESS', any=keymap_item.any, shift=keymap_item.shift, ctrl=keymap_item.ctrl, alt=keymap_item.alt)
 				addon_keymap_item.properties.command = keymap_item.idname
 				
 				addon_shortcuts[-1][1].append(addon_keymap_item)
